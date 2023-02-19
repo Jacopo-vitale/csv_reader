@@ -2,8 +2,6 @@
 
 #include <string>
 #include <vector>
-#include "VariadicTable.h"
-
 
 // Definisco tipi più leggibili
 typedef std::vector<std::vector<float>> __fMatrix;
@@ -34,7 +32,7 @@ public:
             int depth = 0;
             
             if(header.empty() && data.empty())
-                std::cerr << "The file is empty!" << std::endl;
+                std::cerr << "(or empty file)" << std::endl;
 
 
             if(!header.empty()){
