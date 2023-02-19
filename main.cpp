@@ -17,7 +17,9 @@ int main(int argc, char *argv[])
 
     CSVReader* reader = new CSVReader();
 
-    reader->read_float_file("./" + files[0],true,',',&file);
+    system("cp ../*.csv .");
+
+    reader->read_float_file("./" + files[5],true,',',&file);
 
     file.head(10);
     
