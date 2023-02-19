@@ -26,3 +26,12 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
+/***
+ * @todo: 
+ * - Implement tail()
+ * - Implement other dtypes for better precision
+ * - Implement update()
+ * - Implement to_csv(delim '|')
+ * - Better console printing (use pads)
+ * - ...
+*/
