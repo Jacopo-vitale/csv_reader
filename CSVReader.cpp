@@ -9,7 +9,7 @@ CSVReader<T>::CSVReader()
 }
 
 template <typename T>
-void CSVReader<T>::read_file(std::string filepath, bool header, char delim, CSVFile *file)
+void CSVReader<T>::read_file(std::string filepath, bool header, char delim, CSVFile<T> *file)
 {
     try
     {
