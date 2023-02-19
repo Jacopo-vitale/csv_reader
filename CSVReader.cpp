@@ -16,7 +16,7 @@ void CSVReader::read_float_file(std::string filepath, bool header, char delim, f
 
         if(!f.is_open())
             std::cerr << "File not found!";
-
+ 
         std::string line, num_str, header_names;
 
         if (header)
