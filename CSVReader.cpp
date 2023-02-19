@@ -3,20 +3,25 @@
 #include <sstream>
 #include "CSVReader.h"
 
-CSVReader::CSVReader()
+template <typename T>
+CSVReader<T>::CSVReader()
 {
 }
 
-void CSVReader::read_float_file(std::string filepath, bool header, char delim, fCSVFile* float_file)
+template <typename T>
+void CSVReader<T>::read_file(std::string filepath, bool header, char delim, CSVFile *file)
 {
     try
     {
         // Apro lo streaming da file
         std::fstream f(filepath, std::ios::in);
 
-        if(!f.is_open())
+        if (!f.is_open())
+        {
             std::cerr << "File not found!";
- 
+            std::exit(EXIT_FAILURE);
+        }
+
         std::string line, num_str, header_names;
 
         if (header)
@@ -26,13 +31,13 @@ void CSVReader::read_float_file(std::string filepath, bool header, char delim, f
 
             while (std::getline(hs, header_names, delim))
             {
-                float_file->header.push_back(header_names);
+                file->header.push_back(header_names);
             }
         }
 
         while (std::getline(f, line))
         {
-            float_file->data.push_back(this->float_row(line, delim));
+            file->data.push_back(this->row(line, delim));
         }
 
         f.close();
@@ -45,21 +50,8 @@ void CSVReader::read_float_file(std::string filepath, bool header, char delim, f
     return;
 }
 
-void CSVReader::read_int_file(std::string filepath, bool header, char delim)
-{
-    
-    return;
-
-}
-
-void CSVReader::read_double_file(std::string filepath, bool header, char delim)
-{
-
-    return;
-}
-
-
-std::vector<float> CSVReader::float_row(std::string line, char delimiter)
+template <typename T>
+std::vector<T> CSVReader<T>::row(std::string line, char delimiter)
 {
 
     // Apro lo streaming della stringa
@@ -67,46 +59,18 @@ std::vector<float> CSVReader::float_row(std::string line, char delimiter)
 
     std::string tmp;
 
-    std::vector<float> row;
+    std::vector<T> row;
 
     while (std::getline(ss, tmp, delimiter))
     {
-        row.push_back(std::stof(tmp));
-    }
-
-    return row;
-}
-
-std::vector<int> CSVReader::int_row(std::string line, char delimiter)
-{
-
-    // Apro lo streaming della stringa
-    std::stringstream ss(line, std::ios::in);
-
-    std::string tmp;
-
-    std::vector<int> row;
-
-    while (std::getline(ss, tmp, delimiter))
-    {
-        row.push_back(std::stoi(tmp));
-    }
-
-    return row;
-}
-
-
-std::vector<double> CSVReader::double_row(std::string line, char delimiter){
-      // Apro lo streaming della stringa
-    std::stringstream ss(line, std::ios::in);
-
-    std::string tmp;
-
-    std::vector<double> row;
-
-    while (std::getline(ss, tmp, delimiter))
-    {
-        row.push_back(std::stod(tmp));
+        if (tmp.find('.') + 1)
+        { // Avoid index 0
+            row.push_back(std::stof(tmp));
+        }
+        else
+        {
+            row.push_back(std::stoi(tmp));
+        }
     }
 
     return row;

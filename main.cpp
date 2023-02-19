@@ -3,7 +3,6 @@
 #include <sstream>
 #include "CSVReader.h"
 
-
 int main(int argc, char *argv[])
 {
     std::vector<std::string> files = {"dummy_csv1.csv",
@@ -12,26 +11,26 @@ int main(int argc, char *argv[])
                                       "dummy_csv4.csv",
                                       "dummy_csv5.csv",
                                       "dummy_csv6.csv"};
-    
-    CSVReader::fCSVFile file;
 
-    CSVReader* reader = new CSVReader();
+    CSVReader<float>::CSVFile file; // fCSVFile for floating point precision iCSVFile for integers dCDVFile for double precision
+
+    CSVReader<float> reader;
 
     system("cp ../*.csv .");
 
-    reader->read_float_file("./" + files[5],true,',',&file);
+    reader.read_file("./" + files[5], true, ',', &file);
 
     file.head(10);
-    
+
     return EXIT_SUCCESS;
 }
 
 /***
- * @todo: 
+ * @todo:
  * - Implement tail()
  * - Implement other dtypes for better precision
  * - Implement update()
  * - Implement to_csv(delim '|')
  * - Better console printing (use pads)
  * - ...
-*/
+ */
