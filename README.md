@@ -18,5 +18,7 @@ Suppose we have data to read stored in a local csv file:
 So now we can call our reader/writer ready to read:
 
 `rw->read_file("path/to/file", myfile, true, ',')` *--> the reader/writer will fill our container*
-
-~~~~~~...Work in progress...~~~~~~~
+<br>
+...
+Work in progress
+...
