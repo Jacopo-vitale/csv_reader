@@ -34,7 +34,7 @@ private:
 public:
     CSVFile();
 
-    CSVFile(std::vector<std::string>* header, T **data, int rows, int cols);
+    CSVFile(std::vector<std::string> header, T **data, int rows, int cols);
 
     ~CSVFile();
 
@@ -68,22 +68,26 @@ CSVFile<T>::CSVFile()
    \param (int) cols: data matrix total number of cols
 */
 template <class T>
-CSVFile<T>::CSVFile(std::vector<std::string>* header, T **data, int rows, int cols)
+CSVFile<T>::CSVFile(std::vector<std::string> header, T **data, int rows, int cols)
 {
+    std::vector<T> tmp;
 
     // header copy
     for (const auto &h : header)
     {
-        this->header.push_back(h);
+        this->appendToHeader(h);
     }
 
-    // copy data
+    //copy data
     for (size_t i = 0; i < rows; i++)
     {
         for (size_t j = 0; j < cols; j++)
         {
-            this->data[i][j] = data[i][j];
+            tmp.push_back(data[i][j]);
         }
+
+        this->appendRowToData(tmp);
+        tmp.clear();
     }
 }
 
