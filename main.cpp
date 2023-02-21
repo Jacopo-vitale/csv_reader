@@ -12,11 +12,11 @@ int main(int argc, char *argv[])
                                       "dummy_csv5.csv",
                                       "dummy_csv6.csv"};
 
-    CSVFile<float>* file = new CSVFile<float>();
+    CSVFile<double>* file = new CSVFile<double>();
 
     system("cp ../*.csv .");
 
-    CSVRW<float>* rw = CSVRW<float>::instance(dtypes::F);
+    CSVRW<double>* rw = CSVRW<double>::instance(dtypes::D);
 
     rw->read_file("./" + files[0],file,true,',');
 

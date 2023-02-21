@@ -90,21 +90,21 @@ void CSVFile<T>::head(int heads)
 
     if (!header.empty())
     {
-        for (auto &h : header)
-            std::cout << h << "\t";
+        for (int i=0; i<header.size()-1; i++)
+            std::cout << header[i] << "\t";
 
-        std::cout << std::endl;
+        std::cout << header.back() << "\n";
     }
 
     depth = data.size() <= heads ? data.size() : heads;
 
     for (int i = 0; i < depth; i++)
     {
-        for (int j = 0; j < data[0].size(); j++)
+        for (int j = 0; j < data[0].size()-1; j++)
         {
-            printf("%f\t", data[i][j]);
+            std::cout << data[i][j] << "\t";
         }
-        std::cout << std::endl;
+        std::cout << data[i].back() << "\n";
     }
 }
 

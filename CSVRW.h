@@ -9,6 +9,29 @@
  * This is the CSVRW (CSV Read & Write)
  * This class can help to read and write CSV files just instanciating one single time.
  * A Singleton design Pattern is being used to avoid multiple reader/writer instancing.
+ * 
+ * A global enum variable is needed for manual data type conversion (not more needed with C++20):
+ * - F for float
+ * - D for double
+ * - I for integer
+ * 
+ * So this class needs to be instanciated by using this dtype flags.
+ * Manual data type control can improve memory space allocation.
+ * 
+ * Class Methods:
+ * - read_file : method for reading a csv file by provinding local path, user can provide custom delimiter
+ * - write_file: method for writing data on a csv file, user can provide custom delimiter
+ * 
+ * Function read_file parameters:
+ * - filepath: path/to/file (string) 
+ * - CSVFile<T> *file: CSVFile variable to store fetched data
+ * - header: is your file having an header? true/false (default true)
+ * - delim: delimiter character (default ',')
+ * 
+ * Function write_file parameters:
+ * - filename: path/to/write/ (must .csv extension be provided)
+ * - file: pointer to CSVFile variable (can be created starting from numerical matrix)
+ * - delim: delimiter (default ',')
  *
 */
 
@@ -28,13 +51,12 @@ private:
     std::vector<T> row(std::string line, char delimiter);
 
 public:
-    
+    // Singleton Stuff
     CSVRW(CSVRW &other) = delete;
-
     void operator=(const CSVRW &) = delete;
-
     static CSVRW *instance(dtypes dt);
 
+    // Methods
     void read_file(std::string filepath, CSVFile<T> *file, bool header = true, char delim = ',');
     void write_file(std::string filename, CSVFile<T> *file, char delim = ',');
     
