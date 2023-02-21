@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "CSVReader.h"
+#include "CSVRW.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,13 +14,15 @@ int main(int argc, char *argv[])
 
     CSVFile<float>* file = new CSVFile<float>();
 
-    CSVRW<float> reader;
-
     system("cp ../*.csv .");
 
-    reader.read_file("./" + files[0],file,true,',');
+    CSVRW<float>* rw = CSVRW<float>::instance(dtypes::F);
+
+    rw->read_file("./" + files[0],file,true,',');
 
     file->head(10);
+
+    rw->write_file("/home/jacopo/csv_reader/csv_writer.csv", file);
 
     return EXIT_SUCCESS;
 }

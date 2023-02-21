@@ -40,8 +40,8 @@ public:
 
     void head(int heads = 5);
 
-    std::vector<std::string> getHeader() { return header; }
-    std::vector<std::vector<T>> getData() { return data(); }
+    std::vector<std::string>    getHeader() { return header; }
+    std::vector<std::vector<T>> getData()   { return data; }
 
     void appendToHeader(std::string element) { header.push_back(element); }
     void appendRowToData(std::vector<T> row) { data.push_back(row); }
