@@ -95,7 +95,7 @@ std::vector<T> CSVReader<T>::row(std::string line, char delimiter)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << '\nBad File Conversion';
     }
     
 
