@@ -6,15 +6,15 @@
 /**
  * This is CSVFile class, use this calss for manage or create your CSV file.
  * This class has two attributes:
- * - header (vector<string>)   : Usually a CSV File contains an header for Columns Names
- * - data   (vector<vector<T>>): The data (numerical) contained in the file.
+ * - `header` (`vector<string>`)   : Usually a CSV File contains an header for Columns Names
+ * - data   (`vector<vector<T>>`): The data (numerical) contained in the file.
  * 
  * Constructor: 
  * - No params: Creates empty CSVFile Object
  * 
  * Constructor with Parameters:
- * - vector<string> header: if you want to build CSVFile object starting from aleady existing data
- * - T**            data  :_if you have a matrix of numerical data 
+ * - `vector<string>` header: if you want to build CSVFile object starting from aleady existing data
+ * - `T**`            data  : if you have a matrix of numerical data 
  * 
  * Methods:
  * - appendToHeader: Append element to header (kept private)
