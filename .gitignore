@@ -4,6 +4,7 @@ build/*
 .vscode/*
 csvrw
 ./html
+html/*
 latex/annotated.tex
 latex/classCSVFile.tex
 latex/classCSVRW.tex
