@@ -34,7 +34,7 @@ private:
 public:
     CSVFile();
 
-    CSVFile(std::vector<std::string> header, T **data, int rows, int cols);
+    CSVFile(std::vector<std::string>* header, T **data, int rows, int cols);
 
     ~CSVFile();
 
@@ -62,13 +62,13 @@ CSVFile<T>::CSVFile()
 
 /*! 
    \brief Construct a CSVFile starting from local variables
-   \param (vector<string>) header: string vector containing all columns names
+   \param (vector<string>*) header: string vector containing all columns names
    \param (T**) data: variable containing numerical data e.g. a float matrix
    \param (int) rows: data matrix total number of rows
    \param (int) cols: data matrix total number of cols
 */
 template <class T>
-CSVFile<T>::CSVFile(std::vector<std::string> header, T **data, int rows, int cols)
+CSVFile<T>::CSVFile(std::vector<std::string>* header, T **data, int rows, int cols)
 {
 
     // header copy
