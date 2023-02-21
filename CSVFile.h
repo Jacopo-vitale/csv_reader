@@ -8,18 +8,21 @@
  * This class has two attributes:
  * - header (vector<string>)   : Usually a CSV File contains an header for Columns Names
  * - data   (vector<vector<T>>): The data (numerical) contained in the file.
- *  
- * (i) Constructor: No params -> Creates empty CSVFile Object
- * (ii) Constructor Params:
- * - vector<string> header -> if you want to build CSVFile object starting from aleady existing data
- * - T**            data   -> if you have a matrix of numerical data 
+ * 
+ * Constructor: 
+ * - No params: Creates empty CSVFile Object
+ * 
+ * Constructor with Parameters:
+ * - vector<string> header: if you want to build CSVFile object starting from aleady existing data
+ * - T**            data  :_if you have a matrix of numerical data 
  * 
  * Methods:
- * - appendToHeader -> Append element to header (kept private)
- * - appendRowToData-> Append a vector of values to data matrix (kept private)
- * 
- * --- Jacopo Vitale MSc ---
+ * - appendToHeader: Append element to header (kept private)
+ * - appendRowToData: Append a vector of values to data matrix (kept private)
+ * - getters      
  **/
+
+
 
 template <class T>
 class CSVFile
