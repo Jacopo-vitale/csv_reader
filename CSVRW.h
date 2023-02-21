@@ -66,6 +66,12 @@ public:
 template <class T>
 CSVRW<T> *CSVRW<T>::_csvrw = nullptr;
 
+
+/*! 
+   \brief Instanciate a CSVRW class object
+   \param dt: dtypes::F, dtypes::D, dtypes::I
+   \returns CSVRW instance if is not instanciated.
+*/
 template <class T>
 CSVRW<T> *CSVRW<T>::instance(dtypes dt)
 {
@@ -76,6 +82,12 @@ CSVRW<T> *CSVRW<T>::instance(dtypes dt)
     return _csvrw;
 }
 
+/*! 
+   \brief Read a csv file 
+   \param (string) filepath: path/to/file
+   \param (CSVFile*) file: variable containing csv fetched data
+   \param (bool) header: if the file contains an header (columns names)
+*/
 template <class T>
 void CSVRW<T>::read_file(std::string filepath, CSVFile<T> *file, bool header, char delim)
 {
@@ -122,6 +134,12 @@ void CSVRW<T>::read_file(std::string filepath, CSVFile<T> *file, bool header, ch
     return;
 }
 
+/*! 
+   \brief Write a csv file 
+   \param (string) filepath: path/to/write (including .csv)
+   \param (CSVFile*) file: variable containing csv data to write
+   \param (char) delim: custom delimiter default is comma
+*/
 template <class T>
 void CSVRW<T>::write_file(std::string filename, CSVFile<T> *file, char delim)
 {

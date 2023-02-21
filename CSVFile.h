@@ -50,11 +50,23 @@ public:
     int getDataCols();
 };
 
+
+/*! 
+   \brief Construct an empty CSVFile class object
+*/
 template <class T>
 CSVFile<T>::CSVFile()
 {
 }
 
+
+/*! 
+   \brief Construct a CSVFile starting from local variables
+   \param (vector<string>) header: string vector containing all columns names
+   \param (T**) data: variable containing numerical data e.g. a float matrix
+   \param (int) rows: data matrix total number of rows
+   \param (int) cols: data matrix total number of cols
+*/
 template <class T>
 CSVFile<T>::CSVFile(std::vector<std::string> header, T **data, int rows, int cols)
 {
@@ -80,6 +92,10 @@ CSVFile<T>::~CSVFile()
 {
 }
 
+/*! 
+   \brief Print elements to stdout (default is 5 elements)
+   \param (int) heads: number of elements to print 
+*/
 template <class T>
 void CSVFile<T>::head(int heads)
 {
@@ -108,6 +124,9 @@ void CSVFile<T>::head(int heads)
     }
 }
 
+/*! 
+   \brief Safe getter of number of rows
+*/
 template <class T>
 int CSVFile<T>::getDataRows()
 {
@@ -119,6 +138,9 @@ int CSVFile<T>::getDataRows()
         return 0;
 }
 
+/*! 
+   \brief Safe getter of number of cols
+*/
 template <class T>
 int CSVFile<T>::getDataCols()
 {
