@@ -6,30 +6,29 @@
 #include "CSVFile.h"
 
 template <class T>
-class CSVReader
+class CSVRW
 {
 
 protected:
     std::vector<T> row(std::string line, char delimiter);
 
 public:
-    CSVReader();
+    CSVRW();
 
-    ~CSVReader(){};
-
-    
+    ~CSVRW(){};
 
     void read_file(std::string filepath, CSVFile<T>* file,bool header = true, char delim = ',');
+    void write_file(CSVFile<T>* file, char delim = ',');
 };
 
 
 template <class T>
-CSVReader<T>::CSVReader()
+CSVRW<T>::CSVRW()
 {
 }
 
 template <class T>
-void CSVReader<T>::read_file(std::string filepath, CSVFile<T> *file, bool header, char delim)
+void CSVRW<T>::read_file(std::string filepath, CSVFile<T> *file, bool header, char delim)
 {
     try
     {
@@ -71,7 +70,7 @@ void CSVReader<T>::read_file(std::string filepath, CSVFile<T> *file, bool header
 }
 
 template <class T>
-std::vector<T> CSVReader<T>::row(std::string line, char delimiter)
+std::vector<T> CSVRW<T>::row(std::string line, char delimiter)
 {
     try{
     // Apro lo streaming della stringa

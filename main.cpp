@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     CSVFile<float>* file = new CSVFile<float>();
 
-    CSVReader<float> reader;
+    CSVRW<float> reader;
 
     system("cp ../*.csv .");
 
