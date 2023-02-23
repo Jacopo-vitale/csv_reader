@@ -12,13 +12,21 @@ int main(int argc, char *argv[])
                                       "dummy_csv5.csv",
                                       "dummy_csv6.csv"};
 
-    CSVFile<float> *file = new CSVFile<float>();
+    CSVFile<float> *float_file = new CSVFile<float>();
 
-    CSVRW<float> *rw = new CSVRW<float>(dtypes::F);
+    CSVRW<float> *float_rw = new CSVRW<float>(dtypes::F);
 
-    rw->read_file("./dummy_csv1.csv",file);
+    float_rw->read_file("./dummy_csv1.csv",float_file);
 
-    file->head(10);
+    float_file->head(10);
+
+    CSVFile<double> *double_file = new CSVFile<double>();
+
+    CSVRW<double> *double_rw = new CSVRW<double>(dtypes::D);
+
+    double_rw->read_file("./dummy_csv1.csv",double_file);
+
+    double_file->head();
 
     return EXIT_SUCCESS;
 }

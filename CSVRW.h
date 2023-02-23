@@ -37,7 +37,6 @@ template <class T>
 class CSVRW
 {
 private:
-    
 
     dtypes _dt;
 
@@ -155,6 +154,16 @@ void CSVRW<T>::write_file(std::string filename, CSVFile<T> *file, char delim)
 
     std::cout << "File has been written to: " << filename << "\n";
 }
+
+/**
+ * \brief 
+ * This is an helper function that aim to parse each file row and convert data to specified dtype.
+ * \param string line: file line fetched from `std::getline`
+ * \param char delimiter: character file delimiter
+ * 
+ * \returns Parsed file line into specified data type.
+ * 
+*/
 
 template <class T>
 std::vector<T> CSVRW<T>::row(std::string line, char delimiter)
