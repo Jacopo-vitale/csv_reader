@@ -5,19 +5,18 @@
 #include <vector>
 #include "CSVFile.h"
 
-//! F->float, D->double, I->Integer
+/*! \brief F->float, D->double, I->Integer */
 enum dtypes {F,D,I};
 
-
-/**
- * @brief
+/*!
+ * \brief
  * This is the CSVRW (CSV Read & Write)
  * This class can help to read and write CSV files just instanciating this object.
  * 
  * So this class needs to be instanciated by using this dtype flags.
  * Manual data type control can improve memory space allocation.
  *
- * @attention
+ * \attention
  * This class can only read a file like:
  * 
  * |col1 |col2 |col3 |...|col_m | -->header
@@ -28,8 +27,14 @@ enum dtypes {F,D,I};
  * 
  * |valn1|valn2|valn3|...|val_nm|   
  * 
- * @remark 
+ * \warning
  * Columns having categorical data types are not supported, consider to encode your data to numeric.
+ * 
+ * 
+ * \author 
+ *  Jacopo Vitale MSc. - Computer Science Engineering
+ *  University of Cassino and Southern Latium
+ *  \date Feb 23 2023
  **/
 
 
