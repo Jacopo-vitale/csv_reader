@@ -155,7 +155,7 @@ void CSVRW<T>::write_file(std::string filename, CSVFile<T> *file, char delim)
     std::cout << "File has been written to: " << filename << "\n";
 }
 
-/**
+/*!
  * \brief 
  * This is an helper function that aim to parse each file row and convert data to specified dtype.
  * \param string line: file line fetched from `std::getline`
