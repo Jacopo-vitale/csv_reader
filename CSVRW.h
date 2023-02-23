@@ -5,37 +5,31 @@
 #include <vector>
 #include "CSVFile.h"
 
+//! F->float, D->double, I->Integer
 enum dtypes {F,D,I};
 
 
 /**
+ * @brief
  * This is the CSVRW (CSV Read & Write)
- * This class can help to read and write CSV files just instanciating one single time.
- * A Singleton design Pattern is being used to avoid multiple reader/writer instancing.
- * 
- * A global enum variable is needed for manual data type conversion (not more needed with C++20):
- * - `F` for float
- * - `D` for double
- * - `I` for integer
+ * This class can help to read and write CSV files just instanciating this object.
  * 
  * So this class needs to be instanciated by using this dtype flags.
  * Manual data type control can improve memory space allocation.
- * 
- * Class Methods:
- * - `read_file `: method for reading a csv file by provinding local path, user can provide custom delimiter
- * - `write_file`: method for writing data on a csv file, user can provide custom delimiter
- * 
- * Function read_file parameters:
- * - `filepath`: path/to/file (string) 
- * - `CSVFile<T> *file`: CSVFile variable to store fetched data
- * - `header`: is your file having an header? true/false (default true)
- * - `delim`: delimiter character (default ',')
- * 
- * Function write_file parameters:
- * - `filename`: `path/to/write/` (must .csv extension be provided)
- * - `file`: pointer to `CSVFile` variable (can be created starting from numerical matrix)
- * - `delim`: delimiter (default ',')
  *
+ * @attention
+ * This class can only read a file like:
+ * 
+ * |col1 |col2 |col3 |...|col_m | -->header
+ * 
+ * |val11|val12|val13|...|val_1m| -->data (numeric)
+ * 
+ * [...]
+ * 
+ * |valn1|valn2|valn3|...|val_nm|   
+ * 
+ * @remark 
+ * Columns having categorical data types are not supported, consider to encode your data to numeric.
  **/
 
 
@@ -43,19 +37,17 @@ template <class T>
 class CSVRW
 {
 private:
-    CSVRW(dtypes dt) : _dt(dt){};
+    
 
     dtypes _dt;
-
-    static CSVRW *_csvrw;
 
     std::vector<T> row(std::string line, char delimiter);
 
 public:
-    // Singleton Stuff
-    CSVRW(CSVRW &other) = delete;
-    void operator=(const CSVRW &) = delete;
-    static CSVRW *instance(dtypes dt);
+
+    CSVRW(dtypes dt) : _dt(dt){};
+    ~CSVRW(){}
+    
 
     // Methods
     void read_file(std::string filepath, CSVFile<T> *file, bool header = true, char delim = ',');
@@ -63,24 +55,6 @@ public:
     
 };
 
-template <class T>
-CSVRW<T> *CSVRW<T>::_csvrw = nullptr;
-
-
-/*! 
-   \brief Instanciate a CSVRW class object
-   \param dt: dtypes::F, dtypes::D, dtypes::I
-   \returns CSVRW instance if is not instanciated.
-*/
-template <class T>
-CSVRW<T> *CSVRW<T>::instance(dtypes dt)
-{
-    if (_csvrw == nullptr)
-    {
-        _csvrw = new CSVRW(dt);
-    }
-    return _csvrw;
-}
 
 /*! 
    \brief Read a csv file 

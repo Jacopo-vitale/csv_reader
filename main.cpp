@@ -12,37 +12,13 @@ int main(int argc, char *argv[])
                                       "dummy_csv5.csv",
                                       "dummy_csv6.csv"};
 
-/*     CSVFile<float> *file = new CSVFile<float>();
+    CSVFile<float> *file = new CSVFile<float>();
 
-    system("cp ../*.csv ."); */
+    CSVRW<float> *rw = new CSVRW<float>(dtypes::F);
 
-    CSVRW<float> *rw = CSVRW<float>::instance(dtypes::D);
-/* 
-    rw->read_file("./" + files[0], file, true, ',');
+    rw->read_file("./dummy_csv1.csv",file);
 
     file->head(10);
-
-    rw->write_file("/home/jacopo/csv_reader/csv_writer.csv", file); */
-    
-    int rows = 100;
-    int cols = 7;
-
-    float **m = new float*[rows];
-    
-    for (int i = 0; i < rows; i++)
-    {
-        m[i] = new float[cols];
-    }
-
-    for(int i=0; i<rows; i++)
-        for(int j=0; j<cols; j++)
-            m[i][j] = float(rand())/RAND_MAX;
-
-    std::vector<std::string> my_header = {"col1","col2","col3","col4","col5","col6","col7"};
-
-    CSVFile<float>* from_mat = new CSVFile<float>(my_header,m,rows,cols);
-
-    rw->write_file("/home/jacopo/csv_reader/csv_writer_from_mat.csv", from_mat);
 
     return EXIT_SUCCESS;
 }
