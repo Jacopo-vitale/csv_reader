@@ -3,9 +3,9 @@
 Not for a professional use, but for just visualize, manipulate and print your comma separated data.
 
 ## Usage:
-First you need to instanciate a reader/writer, suppose you have a `float` file to read:<br>
+First you need to instanciate a reader/writer, suppose you have a `float` file to read (double and int dtypes are supported):<br>
 
-`CSVRW<float>* rw = CSVRW::instance(dtype::F)`
+`CSVRW<float>* rw = new CSVRW<float>(dtype::F)`
 
 `dtype::F` is an `enum` variable defined in `CSVRW.h` and it needs to manual provide the data type for a better data fetching and memory management (no more needed in C++20).
 
